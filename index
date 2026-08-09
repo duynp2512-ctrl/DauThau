@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chương trình Ôn thi Đấu thầu</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; color: #333; }
+        h1 { text-align: center; color: #2c3e50; }
+        .menu, .quiz-container, .result-container { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-top: 20px; }
+        .hidden { display: none !important; }
+        .btn { padding: 12px 24px; margin: 5px; cursor: pointer; border: none; border-radius: 5px; font-size: 16px; transition: background 0.3s; font-weight: bold;}
+        .btn-primary { background-color: #3498db; color: white; }
+        .btn-primary:hover { background-color: #2980b9; }
+        .btn-success { background-color: #2ecc71; color: white; }
+        .btn-success:hover { background-color: #27ae60; }
+        .btn-warning { background-color: #e67e22; color: white; }
+        .btn-warning:hover { background-color: #d35400; }
+        .btn-danger { background-color: #e74c3c; color: white; }
+        .btn-danger:hover { background-color: #c0392b; }
+        
+        .question { font-size: 1.2em; font-weight: bold; margin-bottom: 20px; line-height: 1.5; }
+        .option { display: block; padding: 15px; margin: 10px 0; background: #ecf0f1; border: 2px solid #bdc3c7; border-radius: 5px; cursor: pointer; transition: all 0.2s; font-size: 1.1em;}
+        .option:hover { background: #e0e6ed; }
+        
+        /* Trạng thái đáp án */
+        .selected { background-color: #3498db; color: white; border-color: #2980b9; }
+        .correct { background-color: #2ecc71 !important; color: white !important; border-color: #27ae60 !important; }
+        .incorrect { background-color: #e74c3c !important; color: white !important; border-color: #c0392b !important; }
+        
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 25px; }
+        .score-display { font-size: 1.8em; text-align: center; font-weight: bold; margin-bottom: 20px; color: #2c3e50;}
+        #progress { font-weight: bold; color: #7f8c8d; font-size: 1.1em;}
+        
+        /* Header của phần thi */
+        .quiz-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px solid #ecf0f1; padding-bottom: 15px; }
+    </style>
+</head>
+<body>
+
+    <h1>Chương trình Ôn thi Đấu thầu</h1>
+    
+    <!-- Menu chính -->
+    <div id="menu" class="menu">
+        <h2 style="text-align:center; margin-bottom: 30px;">Chọn chế độ</h2>
+        <div style="display:flex; justify-content:center; gap: 15px; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="startMode('practice')">Chế độ Ôn tập (Check ngay Đ/S)</button>
+            <button class="btn btn-warning" onclick="startMode('exam')">Chế độ Thi (Ngẫu nhiên 50 câu)</button>
+        </div>
+    </div>
+
+    <!-- Khu vực câu hỏi -->
+    <div id="quiz-container" class="quiz-container hidden">
+        <!-- Thanh thông tin tiến độ & Nút Home -->
+        <div class="quiz-header">
+            <div id="progress">Câu 1/50</div>
+            <button class="btn btn-danger" style="padding: 8px 15px; font-size: 14px; margin: 0;" onclick="returnToMenu()">🏠 Về trang đầu</button>
+        </div>
+
+        <div id="question-text" class="question">Nội dung câu hỏi</div>
+        <div id="options-container"></div>
+        
+        <div class="nav-buttons">
+            <button id="btn-prev" class="btn btn-primary hidden" onclick="prevQuestion()">Quay lại</button>
+            <button id="btn-next" class="btn btn-primary" onclick="nextQuestion()">Câu tiếp theo</button>
+            <button id="btn-submit" class="btn btn-success hidden" onclick="submitExam()">Nộp bài</button>
+        </div>
+    </div>
+
+    <!-- Khu vực kết quả -->
+    <div id="result-container" class="result-container hidden">
+        <div class="score-display" id="score-text"></div>
+        <div style="text-align: center;">
+            <button class="btn btn-primary" onclick="reviewExam()">Xem lại bài làm</button>
+            <button class="btn btn-warning" onclick="returnToMenu()">Về trang đầu</button>
+        </div>
+    </div>
+
+    <!-- Nhúng dữ liệu câu hỏi từ file sinh tự động -->
+    <script src="data.js"></script>
+    
+    <script>
+        let currentMode = '';
+        let currentQuestions = [];
+        let currentIndex = 0;
+        let userAnswers = []; 
+        let isSubmitted = false;
+
+        // Xáo trộn mảng ngẫu nhiên (Random câu hỏi)
+        function shuffle(array) {
+            let currentIndex = array.length, randomIndex;
+            while (currentIndex != 0) {
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+                [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+            }
+            return array;
+        }
+
+        function startMode(mode) {
+            currentMode = mode;
+            isSubmitted = false;
+            currentIndex = 0;
+            userAnswers = [];
+
+            document.getElementById('menu').classList.add('hidden');
+            document.getElementById('result-container').classList.add('hidden');
+            document.getElementById('quiz-container').classList.remove('hidden');
+
+            // Tạo bản sao và xáo trộn ngân hàng câu hỏi
+            let shuffledBank = shuffle([...questionBank]); 
+
+            if (mode === 'exam') {
+                currentQuestions = shuffledBank.slice(0, 50); // Random 50 câu cho chế độ thi
+            } else {
+                currentQuestions = shuffledBank; // Lấy toàn bộ 340 câu cho chế độ ôn tập
+            }
+
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = currentQuestions[currentIndex];
+            document.getElementById('progress').innerText = `Câu ${currentIndex + 1} / ${currentQuestions.length}`;
+            document.getElementById('question-text').innerText = q.question;
+            
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+
+            for (const [key, value] of Object.entries(q.options)) {
+                if (!value || value === "nan") continue; 
+                
+                const div = document.createElement('div');
+                div.className = 'option';
+                div.innerText = `${key}. ${value}`;
+                div.onclick = () => selectOption(key, div);
+                
+                if (userAnswers[currentIndex] === key) {
+                    div.classList.add('selected');
+                }
+
+                if ((currentMode === 'practice' && userAnswers[currentIndex]) || isSubmitted) {
+                    div.style.pointerEvents = 'none'; 
+                    
+                    if (key === q.answer) {
+                        div.classList.add('correct'); 
+                    } else if (userAnswers[currentIndex] === key) {
+                        div.classList.add('incorrect'); 
+                    }
+                }
+
+                optionsContainer.appendChild(div);
+            }
+
+            document.getElementById('btn-prev').classList.toggle('hidden', currentIndex === 0);
+            
+            if (currentIndex === currentQuestions.length - 1) {
+                document.getElementById('btn-next').classList.add('hidden');
+                if (currentMode === 'exam' && !isSubmitted) {
+                    document.getElementById('btn-submit').classList.remove('hidden');
+                } else if (currentMode === 'practice' || isSubmitted) {
+                    document.getElementById('btn-submit').innerText = "Kết thúc";
+                    document.getElementById('btn-submit').classList.remove('hidden');
+                    document.getElementById('btn-submit').onclick = returnToMenu;
+                }
+            } else {
+                document.getElementById('btn-next').classList.remove('hidden');
+                document.getElementById('btn-submit').classList.add('hidden');
+            }
+        }
+
+        function selectOption(key, element) {
+            if (currentMode === 'practice' && userAnswers[currentIndex]) return;
+            if (currentMode === 'exam' && isSubmitted) return;
+
+            userAnswers[currentIndex] = key;
+            loadQuestion(); 
+        }
+
+        function nextQuestion() {
+            if (currentIndex < currentQuestions.length - 1) {
+                currentIndex++;
+                loadQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                loadQuestion();
+            }
+        }
+
+        function submitExam() {
+            isSubmitted = true;
+            let score = 0;
+            currentQuestions.forEach((q, idx) => {
+                if (userAnswers[idx] === q.answer) {
+                    score++;
+                }
+            });
+
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('result-container').classList.remove('hidden');
+            document.getElementById('score-text').innerText = `Bạn đã trả lời đúng ${score} / ${currentQuestions.length} câu!`;
+        }
+
+        function reviewExam() {
+            document.getElementById('result-container').classList.add('hidden');
+            document.getElementById('quiz-container').classList.remove('hidden');
+            currentIndex = 0;
+            loadQuestion();
+        }
+
+        function returnToMenu() {
+            // Hàm này được gọi khi bấm "Về trang đầu", sẽ dọn dẹp và ẩn/hiện đúng Container
+            document.getElementById('result-container').classList.add('hidden');
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('menu').classList.remove('hidden');
+            
+            // Reset lại text nút submit phòng khi nó bị đổi thành "Kết thúc"
+            document.getElementById('btn-submit').innerText = "Nộp bài";
+            document.getElementById('btn-submit').onclick = submitExam;
+        }
+    </script>
+</body>
+</html>
