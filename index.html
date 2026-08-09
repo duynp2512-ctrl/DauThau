@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hồ Sơ Ôn Thi — Luật Đấu Thầu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3EEE0;
+    --paper-2:#EAE2CC;
+    --ink:#20283D;
+    --ink-soft:#4A5470;
+    --navy:#1E2A47;
+    --navy-2:#2C3A5E;
+    --gold:#A9812F;
+    --gold-soft:#D9C68E;
+    --seal-red:#9C3B34;
+    --seal-red-2:#7C2C27;
+    --ok-green:#3E6B4F;
+    --ok-green-2:#2C4E39;
+    --paper-line: rgba(32,40,61,0.12);
+    --shadow: 0 18px 40px -18px rgba(32,40,61,0.45);
+    --radius: 4px;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(169,129,47,0.10), transparent 60%),
+      radial-gradient(1000px 500px at 110% 10%, rgba(30,42,71,0.08), transparent 55%),
+      var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    min-height:100%;
+    -webkit-font-smoothing:antialiased;
+  }
+  .bg-texture{
+    position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.5;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(32,40,61,0.025) 0px, rgba(32,40,61,0.025) 1px, transparent 1px, transparent 3px);
+  }
+  #app{position:relative; z-index:1; min-height:100vh; display:flex; flex-direction:column;}
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 22px; border-bottom:1px solid var(--paper-line);
+    background:rgba(243,238,224,0.85); backdrop-filter:blur(6px);
+    position:sticky; top:0; z-index:5;
+  }
+  .topbar .brand{
+    font-family:'Bitter',serif; font-weight:700; font-size:15px; letter-spacing:.04em;
+    color:var(--navy); display:flex; align-items:center; gap:10px;
+  }
+  .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--seal-red);}
+  .btn{
+    font-family:'Inter',sans-serif; font-weight:600; font-size:13.5px;
+    border:1px solid var(--ink); background:transparent; color:var(--ink);
+    padding:9px 16px; border-radius:var(--radius); cursor:pointer;
+    letter-spacing:.02em; transition:transform .12s ease, background .15s ease, color .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{background:var(--ink); color:var(--paper);}
+  .btn:active{transform:translateY(1px);}
+  .btn-ghost{border-color:var(--paper-line); color:var(--ink-soft);}
+  .btn-ghost:hover{background:var(--ink-soft); color:var(--paper); border-color:var(--ink-soft);}
+  .btn-home{display:flex; align-items:center; gap:8px;}
+  main{flex:1; display:flex; flex-direction:column;}
+
+  /* ---------- HOME ---------- */
+  .home{
+    max-width:960px; margin:0 auto; padding:64px 24px 80px; width:100%;
+  }
+  .seal{
+    width:118px; height:118px; margin:0 auto 26px; border-radius:50%;
+    border:2px solid var(--seal-red); position:relative;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--seal-red); transform:rotate(-6deg);
+  }
+  .seal::before{
+    content:""; position:absolute; inset:7px; border:1px solid var(--seal-red); border-radius:50%; opacity:.55;
+  }
+  .seal-text{
+    font-family:'Bitter',serif; font-weight:700; font-size:12.5px; letter-spacing:.12em; text-align:center; line-height:1.5;
+  }
+  .home-head{text-align:center; margin-bottom:52px;}
+  .eyebrow{
+    font-family:'Space Mono',monospace; font-size:11.5px; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:14px;
+  }
+  h1.title{
+    font-family:'Bitter',serif; font-weight:700; font-size:42px; line-height:1.15; color:var(--navy);
+    margin:0 0 14px;
+  }
+  .subtitle{color:var(--ink-soft); font-size:15.5px; max-width:520px; margin:0 auto; line-height:1.6;}
+
+  .mode-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+  @media (max-width:720px){.mode-grid{grid-template-columns:1fr;}}
+  .mode-card{
+    position:relative; background:var(--paper); border:1px solid var(--paper-line);
+    border-radius:var(--radius); padding:30px 26px 26px; box-shadow:var(--shadow);
+    cursor:pointer; transition:transform .18s ease, border-color .18s ease;
+    overflow:hidden;
+  }
+  .mode-card::after{
+    content:""; position:absolute; left:0; top:0; bottom:0; width:5px;
+  }
+  .mode-card.practice::after{background:var(--gold);}
+  .mode-card.exam::after{background:var(--seal-red);}
+  .mode-card:hover{transform:translateY(-4px); border-color:var(--ink);}
+  .mode-tab{
+    font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--ink-soft); margin-bottom:12px; display:block;
+  }
+  .mode-card h2{font-family:'Bitter',serif; font-size:23px; margin:0 0 10px; color:var(--navy);}
+  .mode-card p{color:var(--ink-soft); font-size:14px; line-height:1.6; margin:0 0 18px;}
+  .mode-card .go{
+    font-weight:700; font-size:13.5px; display:inline-flex; align-items:center; gap:8px; color:var(--navy);
+  }
+  .mode-card .go svg{transition:transform .15s ease;}
+  .mode-card:hover .go svg{transform:translateX(4px);}
+  .bank-count{
+    text-align:center; margin-top:40px; font-family:'Space Mono',monospace; font-size:12.5px; color:var(--ink-soft); letter-spacing:.05em;
+  }
+
+  /* ---------- SETUP ---------- */
+  .setup{max-width:620px; margin:0 auto; padding:56px 24px 80px; width:100%;}
+  .setup-head{margin-bottom:36px;}
+  .setup-head .eyebrow{margin-bottom:10px;}
+  .setup-head h1{font-family:'Bitter',serif; font-size:30px; color:var(--navy); margin:0;}
+  .field{margin-bottom:26px;}
+  .field label{
+    display:block; font-weight:600; font-size:13.5px; color:var(--navy); margin-bottom:10px;
+  }
+  .field .hint{color:var(--ink-soft); font-size:12.5px; margin-top:8px; line-height:1.5;}
+  .chip-row{display:flex; flex-wrap:wrap; gap:10px;}
+  .chip{
+    border:1px solid var(--paper-line); background:var(--paper-2); color:var(--ink);
+    padding:9px 16px; border-radius:999px; font-size:13.5px; font-weight:600; cursor:pointer;
+    transition:all .15s ease;
+  }
+  .chip.active{background:var(--navy); border-color:var(--navy); color:var(--paper);}
+  .num-input{
+    width:110px; padding:10px 12px; border:1px solid var(--paper-line); border-radius:var(--radius);
+    font-family:'Space Mono',monospace; font-size:15px; background:var(--paper); color:var(--ink);
+  }
+  .toggle-row{display:flex; align-items:center; justify-content:space-between; padding:14px 0; border-top:1px solid var(--paper-line);}
+  .toggle-row:last-child{border-bottom:1px solid var(--paper-line);}
+  .toggle-row .label-block .t{font-weight:600; font-size:14px; color:var(--ink);}
+  .toggle-row .label-block .d{font-size:12.5px; color:var(--ink-soft); margin-top:3px;}
+  .switch{width:44px; height:26px; border-radius:999px; background:var(--paper-2); border:1px solid var(--paper-line); position:relative; cursor:pointer; flex-shrink:0;}
+  .switch::after{content:""; position:absolute; width:20px; height:20px; border-radius:50%; background:var(--ink-soft); top:2px; left:2px; transition:all .18s ease;}
+  .switch.on{background:var(--navy); border-color:var(--navy);}
+  .switch.on::after{left:20px; background:var(--paper);}
+  .setup-actions{display:flex; gap:12px; margin-top:36px;}
+  .btn-primary{
+    background:var(--navy); color:var(--paper); border-color:var(--navy); flex:1; padding:13px 18px; font-size:14.5px;
+  }
+  .btn-primary:hover{background:var(--ink);}
+
+  /* ---------- QUIZ ---------- */
+  .quiz-wrap{max-width:760px; margin:0 auto; padding:0 24px 80px; width:100%;}
+  .quiz-top{display:flex; align-items:center; justify-content:space-between; padding:22px 0 14px; gap:16px;}
+  .progress-label{font-family:'Space Mono',monospace; font-size:12.5px; color:var(--ink-soft); letter-spacing:.04em; white-space:nowrap;}
+  .timer{
+    font-family:'Space Mono',monospace; font-size:13px; font-weight:700; color:var(--seal-red);
+    border:1px solid var(--seal-red); padding:6px 12px; border-radius:999px; white-space:nowrap;
+  }
+  .timer.low{animation:pulse 1s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.45;}}
+  .bar{height:3px; background:var(--paper-2); border-radius:2px; overflow:hidden; margin-bottom:8px;}
+  .bar-fill{height:100%; background:var(--gold); transition:width .25s ease;}
+
+  .qcard{
+    background:var(--paper); border:1px solid var(--paper-line); border-radius:var(--radius);
+    padding:34px 30px; box-shadow:var(--shadow); margin-top:12px;
+  }
+  .qnum{font-family:'Bitter',serif; font-style:italic; color:var(--gold); font-size:14px; margin-bottom:10px;}
+  .qtext{font-family:'Bitter',serif; font-size:19px; line-height:1.55; color:var(--navy); margin:0 0 26px;}
+  .options{display:flex; flex-direction:column; gap:12px;}
+  .opt{
+    display:flex; align-items:flex-start; gap:14px; text-align:left;
+    padding:14px 16px; border:1px solid var(--paper-line); border-radius:var(--radius);
+    background:transparent; cursor:pointer; font-family:'Inter',sans-serif; font-size:14.5px; color:var(--ink);
+    line-height:1.5; transition:border-color .12s ease, background .12s ease;
+  }
+  .opt:hover:not(.disabled){border-color:var(--navy); background:rgba(30,42,71,0.04);}
+  .opt .key{
+    flex-shrink:0; width:26px; height:26px; border-radius:50%; border:1px solid var(--ink-soft);
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12.5px; color:var(--ink-soft);
+  }
+  .opt.correct{background:rgba(62,107,79,0.12); border-color:var(--ok-green);}
+  .opt.correct .key{background:var(--ok-green); border-color:var(--ok-green); color:#fff;}
+  .opt.correct .txt{color:var(--ok-green-2); font-weight:600;}
+  .opt.wrong{background:rgba(156,59,52,0.10); border-color:var(--seal-red);}
+  .opt.wrong .key{background:var(--seal-red); border-color:var(--seal-red); color:#fff;}
+  .opt.wrong .txt{color:var(--seal-red-2); font-weight:600;}
+  .opt.disabled{cursor:default;}
+  .opt.dim{opacity:.55;}
+
+  .feedback{
+    margin-top:20px; padding:12px 16px; border-radius:var(--radius); font-size:13.5px; font-weight:600;
+    display:flex; align-items:center; gap:10px;
+  }
+  .feedback.ok{background:rgba(62,107,79,0.12); color:var(--ok-green-2);}
+  .feedback.bad{background:rgba(156,59,52,0.10); color:var(--seal-red-2);}
+
+  .quiz-actions{display:flex; justify-content:space-between; align-items:center; margin-top:22px;}
+  .quiz-actions .left{display:flex; gap:10px;}
+
+  /* ---------- RESULT ---------- */
+  .result{max-width:720px; margin:0 auto; padding:56px 24px 80px; width:100%;}
+  .score-hero{
+    text-align:center; padding:40px 20px; border:1px solid var(--paper-line); border-radius:var(--radius);
+    background:var(--paper); box-shadow:var(--shadow); margin-bottom:30px; position:relative; overflow:hidden;
+  }
+  .score-hero .stamp{
+    position:absolute; top:18px; right:24px; font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.1em;
+    color:var(--ink-soft); transform:rotate(4deg); border:1px solid var(--paper-line); padding:4px 10px; border-radius:4px;
+  }
+  .score-num{font-family:'Bitter',serif; font-weight:700; font-size:64px; color:var(--navy); line-height:1;}
+  .score-sub{color:var(--ink-soft); font-size:14.5px; margin-top:10px;}
+  .verdict{
+    display:inline-block; margin-top:16px; padding:7px 18px; border-radius:999px; font-weight:700; font-size:13px; letter-spacing:.04em;
+  }
+  .verdict.pass{background:rgba(62,107,79,0.15); color:var(--ok-green-2);}
+  .verdict.fail{background:rgba(156,59,52,0.13); color:var(--seal-red-2);}
+  .stat-row{display:flex; justify-content:center; gap:32px; margin-top:26px; flex-wrap:wrap;}
+  .stat{text-align:center;}
+  .stat .n{font-family:'Space Mono',monospace; font-weight:700; font-size:20px;}
+  .stat .l{font-size:11.5px; color:var(--ink-soft); letter-spacing:.06em; text-transform:uppercase; margin-top:4px;}
+  .stat.ok .n{color:var(--ok-green);}
+  .stat.bad .n{color:var(--seal-red);}
+
+  .result-actions{display:flex; gap:12px; margin-bottom:30px;}
+  .review-title{font-family:'Bitter',serif; font-size:18px; color:var(--navy); margin:0 0 16px;}
+  .review-item{
+    border:1px solid var(--paper-line); border-radius:var(--radius); padding:20px 22px; margin-bottom:14px; background:var(--paper);
+  }
+  .review-item .rq{font-size:14.5px; color:var(--ink); line-height:1.55; margin-bottom:12px; font-weight:600;}
+  .review-line{display:flex; gap:8px; font-size:13.5px; margin-bottom:6px; line-height:1.5;}
+  .review-line .tag{flex-shrink:0; font-weight:700; font-size:11.5px; padding:2px 8px; border-radius:4px; text-transform:uppercase;}
+  .review-line.your .tag{background:rgba(156,59,52,0.13); color:var(--seal-red-2);}
+  .review-line.correct .tag{background:rgba(62,107,79,0.15); color:var(--ok-green-2);}
+
+  .empty-note{text-align:center; color:var(--ink-soft); font-size:14px; padding:20px 0;}
+
+  footer.foot{
+    text-align:center; padding:26px 24px; color:var(--ink-soft); font-size:12px; letter-spacing:.03em;
+    border-top:1px solid var(--paper-line);
+  }
+</style>
+</head>
+<body>
+<div class="bg-texture"></div>
+<div id="app">
+  <div id="topbar-slot"></div>
+  <main id="view"></main>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function(){
+  "use strict";
+  const BANK = (typeof questionBank !== "undefined") ? questionBank : [];
+  const view = document.getElementById('view');
+  const topbarSlot = document.getElementById('topbar-slot');
+
+  let state = null; // active quiz state
+  let timerId = null;
+
+  function shuffle(arr){
+    const a = arr.slice();
+    for(let i=a.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [a[i],a[j]] = [a[j],a[i]];
+    }
+    return a;
+  }
+
+  function prepQuestion(q, shuffleOpts){
+    const letters = Object.keys(q.options);
+    let order = letters;
+    if(shuffleOpts) order = shuffle(letters);
+    return {
+      question: q.question,
+      answer: q.answer,
+      letters: order,
+      options: q.options
+    };
+  }
+
+  function fmtTime(sec){
+    sec = Math.max(0, Math.round(sec));
+    const m = Math.floor(sec/60);
+    const s = sec%60;
+    return String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+  }
+
+  function renderTopbar(showHome){
+    topbarSlot.innerHTML = `
+      <div class="topbar">
+        <div class="brand"><span class="dot"></span> HỒ SƠ ÔN THI · ĐẤU THẦU</div>
+        ${showHome ? `<button class="btn btn-ghost btn-home" id="homeBtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+            Trang chủ
+          </button>` : ''}
+      </div>`;
+    const b = document.getElementById('homeBtn');
+    if(b) b.addEventListener('click', goHome);
+  }
+
+  function goHome(){
+    clearInterval(timerId);
+    state = null;
+    renderTopbar(false);
+    view.innerHTML = `
+      <div class="home">
+        <div class="home-head">
+          <div class="seal"><div class="seal-text">LUẬT<br>ĐẤU THẦU</div></div>
+          <div class="eyebrow">Ngân hàng câu hỏi trắc nghiệm</div>
+          <h1 class="title">Ôn thi &amp; Thi thử</h1>
+          <p class="subtitle">Luyện tập theo từng câu với phản hồi tức thì, hoặc bước vào một bài thi thử có tính giờ để kiểm tra thực lực trước ngày thi.</p>
+        </div>
+        <div class="mode-grid">
+          <div class="mode-card practice" id="cardPractice">
+            <span class="mode-tab">Chế độ 01</span>
+            <h2>Ôn tập</h2>
+            <p>Làm từng câu, biết đúng/sai ngay lập tức, có thể quay lại câu trước. Phù hợp để học và ghi nhớ.</p>
+            <span class="go">Bắt đầu ôn tập
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </div>
+          <div class="mode-card exam" id="cardExam">
+            <span class="mode-tab">Chế độ 02</span>
+            <h2>Thi thử</h2>
+            <p>Bộ đề có tính giờ, không xem lại câu trước. Kết thúc bài thi sẽ có điểm số và phần xem lại các câu sai.</p>
+            <span class="go">Bắt đầu thi thử
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </div>
+        </div>
+        <div class="bank-count">NGÂN HÀNG ĐỀ: ${BANK.length} CÂU HỎI</div>
+      </div>`;
+    document.getElementById('cardPractice').addEventListener('click', ()=>renderSetup('practice'));
+    document.getElementById('cardExam').addEventListener('click', ()=>renderSetup('exam'));
+  }
+
+  function renderSetup(mode){
+    renderTopbar(true);
+    const isExam = mode === 'exam';
+    const countOptions = [10,20,30,50, Math.min(100,BANK.length)].filter((v,i,a)=>a.indexOf(v)===v && v<=BANK.length);
+    let chosenCount = isExam ? Math.min(30, BANK.length) : Math.min(20, BANK.length);
+    let shuffleQ = true;
+    let shuffleO = true;
+    let minutes = Math.max(5, Math.round(chosenCount * 1)); // ~1 min/câu
+
+    view.innerHTML = `
+      <div class="setup">
+        <div class="setup-head">
+          <div class="eyebrow">${isExam ? 'Chế độ thi thử' : 'Chế độ ôn tập'}</div>
+          <h1>Thiết lập bài ${isExam ? 'thi' : 'ôn tập'}</h1>
+        </div>
+
+        <div class="field">
+          <label>Số lượng câu hỏi</label>
+          <div class="chip-row" id="chipCount">
+            ${countOptions.map(v=>`<button class="chip${v===chosenCount?' active':''}" data-v="${v}">${v} câu</button>`).join('')}
+            <button class="chip${chosenCount===BANK.length?' active':''}" data-v="${BANK.length}">Tất cả (${BANK.length})</button>
+            <span style="display:flex;align-items:center;gap:8px;">
+              <input type="number" class="num-input" id="customCount" placeholder="Tuỳ chọn" min="1" max="${BANK.length}">
+            </span>
+          </div>
+          <div class="hint">Ngân hàng đề hiện có ${BANK.length} câu hỏi.</div>
+        </div>
+
+        ${isExam ? `
+        <div class="field">
+          <label>Thời gian làm bài (phút)</label>
+          <input type="number" class="num-input" id="minutesInput" value="${minutes}" min="1" max="300">
+          <div class="hint">Mặc định khoảng 1 phút/câu, bạn có thể chỉnh lại.</div>
+        </div>` : ''}
+
+        <div class="toggle-row">
+          <div class="label-block">
+            <div class="t">Xáo trộn thứ tự câu hỏi</div>
+            <div class="d">Mỗi lượt làm bài sẽ ra một trình tự câu hỏi ngẫu nhiên.</div>
+          </div>
+          <div class="switch on" id="toggleQ"></div>
+        </div>
+        <div class="toggle-row">
+          <div class="label-block">
+            <div class="t">Xáo trộn thứ tự đáp án A/B/C/D</div>
+            <div class="d">Tránh việc học vẹt vị trí đáp án.</div>
+          </div>
+          <div class="switch on" id="toggleO"></div>
+        </div>
+
+        <div class="setup-actions">
+          <button class="btn btn-ghost" id="backBtn">Quay lại</button>
+          <button class="btn btn-primary" id="startBtn">Bắt đầu ${isExam?'thi':'ôn tập'}</button>
+        </div>
+      </div>`;
+
+    document.getElementById('backBtn').addEventListener('click', goHome);
+    document.querySelectorAll('#chipCount .chip').forEach(chip=>{
+      chip.addEventListener('click', ()=>{
+        document.querySelectorAll('#chipCount .chip').forEach(c=>c.classList.remove('active'));
+        chip.classList.add('active');
+        chosenCount = parseInt(chip.dataset.v,10);
+        document.getElementById('customCount').value = '';
+        if(isExam){
+          minutes = Math.max(1, Math.round(chosenCount*1));
+          const mi = document.getElementById('minutesInput');
+          if(mi) mi.value = minutes;
+        }
+      });
+    });
+    document.getElementById('customCount').addEventListener('input', (e)=>{
+      const v = parseInt(e.target.value,10);
+      if(v>0){
+        document.querySelectorAll('#chipCount .chip').forEach(c=>c.classList.remove('active'));
+        chosenCount = Math.min(v, BANK.length);
+      }
+    });
+    document.getElementById('toggleQ').addEventListener('click', (e)=>{
+      shuffleQ = !shuffleQ; e.target.classList.toggle('on', shuffleQ);
+    });
+    document.getElementById('toggleO').addEventListener('click', (e)=>{
+      shuffleO = !shuffleO; e.target.classList.toggle('on', shuffleO);
+    });
+    if(isExam){
+      document.getElementById('minutesInput').addEventListener('input', (e)=>{
+        minutes = parseInt(e.target.value,10) || minutes;
+      });
+    }
+
+    document.getElementById('startBtn').addEventListener('click', ()=>{
+      const n = Math.min(Math.max(1, chosenCount||1), BANK.length);
+      startQuiz({
+        mode,
+        count: n,
+        shuffleQ,
+        shuffleO,
+        seconds: isExam ? Math.max(60, (minutes||n)*60) : null
+      });
+    });
+  }
+
+  function startQuiz(cfg){
+    let pool = BANK;
+    let picked = cfg.shuffleQ ? shuffle(pool).slice(0, cfg.count) : pool.slice(0, cfg.count);
+    const questions = picked.map(q=>prepQuestion(q, cfg.shuffleO));
+
+    state = {
+      mode: cfg.mode,
+      questions,
+      idx: 0,
+      selected: new Array(questions.length).fill(null),
+      correctFlags: new Array(questions.length).fill(null),
+      totalSeconds: cfg.seconds,
+      remaining: cfg.seconds,
+      startedAt: Date.now()
+    };
+
+    if(cfg.mode === 'exam' && cfg.seconds){
+      timerId = setInterval(()=>{
+        state.remaining -= 1;
+        if(state.remaining <= 0){
+          clearInterval(timerId);
+          state.remaining = 0;
+          finishQuiz();
+          return;
+        }
+        const t = document.getElementById('timerEl');
+        if(t){
+          t.textContent = fmtTime(state.remaining);
+          t.classList.toggle('low', state.remaining <= 30);
+        }
+      }, 1000);
+    }
+
+    renderTopbar(true);
+    renderQuiz();
+  }
+
+  function renderQuiz(){
+    const q = state.questions[state.idx];
+    const sel = state.selected[state.idx];
+    const total = state.questions.length;
+    const pct = Math.round(((state.idx)/total)*100);
+    const isExam = state.mode === 'exam';
+
+    view.innerHTML = `
+      <div class="quiz-wrap">
+        <div class="quiz-top">
+          <div class="progress-label">CÂU ${state.idx+1} / ${total}${isExam ? ' · THI THỬ' : ' · ÔN TẬP'}</div>
+          ${isExam && state.totalSeconds ? `<div class="timer" id="timerEl">${fmtTime(state.remaining)}</div>` : ''}
+        </div>
+        <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
+
+        <div class="qcard">
+          <div class="qnum">Câu hỏi ${state.idx+1}</div>
+          <p class="qtext">${escapeHtml(q.question)}</p>
+          <div class="options" id="optionsWrap">
+            ${q.letters.map(letter=>{
+              const text = q.options[letter];
+              let cls = 'opt';
+              if(sel){
+                if(letter === q.answer) cls += ' correct';
+                else if(letter === sel && letter !== q.answer) cls += ' wrong';
+                else cls += ' dim';
+                cls += ' disabled';
+              }
+              return `<button class="${cls}" data-letter="${letter}" ${sel?'disabled':''}>
+                <span class="key">${letter}</span>
+                <span class="txt">${escapeHtml(text)}</span>
+              </button>`;
+            }).join('')}
+          </div>
+          ${sel ? `<div class="feedback ${sel===q.answer?'ok':'bad'}">
+              ${sel===q.answer ? '✓ Chính xác!' : `✕ Chưa đúng — đáp án đúng là ${q.answer}.`}
+            </div>` : ''}
+        </div>
+
+        <div class="quiz-actions">
+          <div class="left">
+            ${!isExam && state.idx>0 ? `<button class="btn btn-ghost" id="prevBtn">← Câu trước</button>` : ''}
+          </div>
+          <button class="btn btn-primary" id="nextBtn" ${!sel?'disabled':''} style="${!sel?'opacity:.45;cursor:not-allowed;':''}">
+            ${state.idx===total-1 ? 'Nộp bài / Xem kết quả' : 'Câu tiếp theo →'}
+          </button>
+        </div>
+      </div>`;
+
+    document.querySelectorAll('#optionsWrap .opt').forEach(btn=>{
+      btn.addEventListener('click', ()=>selectAnswer(btn.dataset.letter));
+    });
+    const prevBtn = document.getElementById('prevBtn');
+    if(prevBtn) prevBtn.addEventListener('click', ()=>{ state.idx -= 1; renderQuiz(); });
+    document.getElementById('nextBtn').addEventListener('click', ()=>{
+      if(!state.selected[state.idx]) return;
+      if(state.idx === total-1){ finishQuiz(); }
+      else { state.idx += 1; renderQuiz(); }
+    });
+  }
+
+  function selectAnswer(letter){
+    if(state.selected[state.idx]) return;
+    const q = state.questions[state.idx];
+    state.selected[state.idx] = letter;
+    state.correctFlags[state.idx] = (letter === q.answer);
+    renderQuiz();
+  }
+
+  function finishQuiz(){
+    clearInterval(timerId);
+    const total = state.questions.length;
+    const answered = state.selected.filter(s=>s!==null).length;
+    const correct = state.correctFlags.filter(f=>f===true).length;
+    const wrong = answered - correct;
+    const unanswered = total - answered;
+    const pct = total ? Math.round((correct/total)*100) : 0;
+    const pass = pct >= 70;
+    const elapsed = Math.round((Date.now() - state.startedAt)/1000);
+
+    renderTopbar(true);
+    const wrongItems = state.questions
+      .map((q,i)=>({q, i}))
+      .filter(({i})=> state.selected[i] !== null && state.selected[i] !== state.questions[i].answer);
+
+    view.innerHTML = `
+      <div class="result">
+        <div class="score-hero">
+          <div class="stamp">${state.mode==='exam'?'THI THỬ':'ÔN TẬP'} · ${fmtTime(elapsed)}</div>
+          <div class="score-num">${pct}%</div>
+          <div class="score-sub">${correct}/${total} câu trả lời đúng</div>
+          <div class="verdict ${pass?'pass':'fail'}">${pass ? 'ĐẠT (≥70%)' : 'CHƯA ĐẠT (<70%)'}</div>
+          <div class="stat-row">
+            <div class="stat ok"><div class="n">${correct}</div><div class="l">Đúng</div></div>
+            <div class="stat bad"><div class="n">${wrong}</div><div class="l">Sai</div></div>
+            <div class="stat"><div class="n">${unanswered}</div><div class="l">Bỏ qua</div></div>
+          </div>
+        </div>
+
+        <div class="result-actions">
+          <button class="btn btn-primary" id="retryBtn" style="flex:1;">Làm lại bộ đề mới</button>
+          <button class="btn btn-ghost" id="homeBtn2">Trang chủ</button>
+        </div>
+
+        <h3 class="review-title">Xem lại các câu chưa đúng (${wrongItems.length})</h3>
+        <div id="reviewList">
+          ${wrongItems.length===0 ? `<div class="empty-note">Không có câu nào sai — làm rất tốt!</div>` :
+            wrongItems.map(({q,i})=>`
+              <div class="review-item">
+                <div class="rq">${state.idx!==undefined?'':''}${escapeHtml(q.question)}</div>
+                <div class="review-line your"><span class="tag">Bạn chọn</span> ${state.selected[i]}. ${escapeHtml(q.options[state.selected[i]])}</div>
+                <div class="review-line correct"><span class="tag">Đáp án đúng</span> ${q.answer}. ${escapeHtml(q.options[q.answer])}</div>
+              </div>`).join('')}
+        </div>
+      </div>`;
+
+    document.getElementById('homeBtn2').addEventListener('click', goHome);
+    document.getElementById('retryBtn').addEventListener('click', ()=>renderSetup(state.mode));
+  }
+
+  function escapeHtml(str){
+    return String(str)
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;');
+  }
+
+  goHome();
+})();
+</script>
+</body>
+</html>
