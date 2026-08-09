@@ -3568,5 +3568,335 @@ const questionBank = [
       "D": "Nhà thầu phải điền các trọng số về đơn giá (N1, N2,...) của từng hạng mục"
     },
     "answer": "B"
+  },
+    {
+    "question": "Trong chào giá trực tuyến theo quy trình rút gọn, khi nhập trọng số trong lần chào giá đầu tiên, nhà thầu cần làm gì?",
+    "options": {
+      "A": "Nhập ngẫu nhiên các giá trị trọng số",
+      "B": "Nhập trọng số bằng giá trị khối lượng từng hạng mục",
+      "C": "Nhập trọng số là đơn giá dự kiến chào cho từng hạng mục",
+      "D": "Không cần nhập trọng số, hệ thống sẽ tự động tính"
+    },
+    "answer": "C"
+  },
+  {
+    "question": "Khi đánh giá E-HSDT đối với gói thầu mua sắm hàng hóa, trường hợp có sự sai khác giữa thông tin kê khai về về ký mã hiệu, nhãn hiệu, xuất xứ, hãng sản xuất trong bảng đề xuất về hàng hóa của nhà thầu\n(Mẫu số 10B chương IV) so với tài liệu đính kèm thì Tổ chuyên gia đánh giá như thế nào?",
+    "options": {
+      "A": "Đánh giá theo thông tin trong tài liệu đính kèm trong trường hợp sau khi làm rõ E-HSDT thông tin trong tài liệu đính kèm là chính xác",
+      "B": "Đánh giá theo thông tin trong Mẫu số 10B nhà thầu kê khai, trừ trường hợp ký mã hiệu (nếu có), nhãn hiệu, hãng sản xuất kê khai tại Mẫu số 10B không tồn tại trên thị trường.",
+      "C": "Loại nhà thầu E-HSDT của nhà thầu do có sự sai khác giữa thông tin kê khai và tài liệu đính kèm.",
+      "D": "Phương án A và B đều đúng"
+    },
+    "answer": "B"
+  },
+  {
+    "question": "Đối với đấu thầu qua mạng, khi tham dự gói thầu mua sắm hàng hóa, trong bảng đề xuất về hàng hóa (Mẫu số 10B chương IV), nhà thầu A chào '“theo catalog đính kèm” thay vì kê khai thông tin theo Mẫu\nsố 10B. Tổ chuyên gia đánh giá nội dung này trong E- HSDT của nhà thầu như thế nào là phù hợp?",
+    "options": {
+      "A": "Tổ chuyên gia đánh giá nội dung này theo Catalog nhà thầu A đính kèm. Nội dung này được tiếp tục đánh giá khi Catalog không tham chiếu đến nhiều hơn 01 ký mã hiệu, nhãn hiệu, hãng sản xuất...cho một loại hàng hóa",
+      "B": "Báo cáo chủ đầu tư yêu cầu nhà thầu A làm rõ nội dung này nếu Catalog tham chiếu đến nhiều hơn 01 ký mã hiệu, nhãn hiệu, hãng sản xuất...cho một loại hàng hóa để làm cơ sở đánh giá",
+      "C": "E-HSDT của nhà thầu A không được xem xét, đánh giá",
+      "D": "Phương án A và B đều đúng"
+    },
+    "answer": "C"
+  },
+  {
+    "question": "Đối với đấu thầu qua mạng, khi tham dự gói thầu mua sắm hàng hóa, trong bảng đề xuất về hàng hóa (Mẫu số 10B chương IV), nhà thầu A chào ''không có'' đối với nội dung ký, mã hiệu. Tuy nhiên, trong quá trình đánh giá, Tổ chuyên gia phát hiện hãng sản xuất có ký, mã hiệu của hàng hóa này. Tổ chuyên gia đánh giá như thế nào trong tình huống này?",
+    "options": {
+      "A": "Báo cáo chủ đầu tư yêu cầu nhà thầu A làm rõ nội dung này trên Hệ thống",
+      "B": "E-HSDT không được xem xét, đánh giá",
+      "C": "Tiếp tục xem xét, đánh giá nếu tài liệu đính kèm của nhà thầu đầy đủ thông tin",
+      "D": "Cả 3 phương án đều sai"
+    },
+    "answer": "B"
+  },
+  {
+    "question": "Trường hợp gói thầu đủ điều kiện áp dụng hình thức chỉ định thầu theo quy định tại khoản 1 Điều 78 của Nghị định số 214/2025/NĐ-CP nhưng chủ đầu tư quyết định áp dụng hình thức đấu thầu rộng rãi để lựa chọn nhà thầu thì thời gian chuẩn bị hồ sơ dự thầu là?",
+    "options": {
+      "A": "Tối thiểu là 18 ngày kể từ ngày đầu tiên hồ sơ mời thầu được phát hành đến ngày có thời điểm đóng thầu",
+      "B": "Tối thiểu là 09 ngày làm việc kể từ ngày đầu tiên hồ sơ mời thầu được phát hành đến ngày có thời điểm đóng thầu",
+      "C": "Tối thiểu là 09 ngày kể từ ngày đầu tiên hồ sơ mời thầu được phát hành đến ngày có thời điểm đóng thầu",
+      "D": "Tối thiểu là 18 ngày làm việc kể từ ngày đầu tiên hồ sơ mời thầu được phát hành đến ngày có thời điểm đóng thầu"
+    },
+    "answer": "C"
+  },
+  {
+    "question": "Đối với đấu thầu không qua mạng, trường hợp nhà thầu có thư giảm giá, việc hiệu chỉnh sai lệch được thực hiện trên cơ sở nào?",
+    "options": {
+      "A": "Giá dự thầu của nhà thầu sau khi trừ đi giá trị giảm giá",
+      "B": "Giá đề nghị trúng thầu",
+      "C": "Giá gói thầu",
+      "D": "Giá dự thầu của nhà thầu chưa trừ đi giá trị giảm giá"
+    },
+    "answer": "D"
+  },
+  {
+    "question": "Đối với gói thầu mua sắm hàng hóa tổ chức đấu thầu rộng rãi qua mạng, trường hợp nhà thầu là liên danh thì nhà thầu chứng minh khả năng thực hiện nghĩa vụ bảo hành như thế nào?",
+    "options": {
+      "A": "Từng thành viên liên danh phải cam kết có năng lực thực hiện nghĩa vụ bảo hành theo yêu cầu của E-HSMT và có hợp đồng nguyên tắc với đơn vị có đủ khả năng thực hiện nghĩa vụ bảo hành theo yêu cầu của E-HSMT",
+      "B": "Từng thành viên liên danh phải cam kết có năng lực tự thực hiện nghĩa vụ bảo hành theo yêu cầu của E-HSMT hoặc có hợp đồng nguyên tắc với đơn vị có đủ khả năng thực hiện nghĩa vụ bảo hành theo yêu cầu của E-HSMT",
+      "C": "Nhà thầu liên danh có cam kết có năng lực thực hiện nghĩa vụ bảo hành theo yêu cầu của E-HSMT và có hợp đồng nguyên tắc với đơn vị có đủ khả năng thực hiện nghĩa vụ bảo hành theo yêu cầu của E-HSMT",
+      "D": "Nhà thầu liên danh có cam kết có năng lực tự thực hiện nghĩa vụ bảo hành theo yêu cầu của E-HSMT hoặc có hợp đồng nguyên tắc với đơn vị có đủ khả năng thực hiện nghĩa vụ bảo hành theo yêu cầu của E-HSMT"
+    },
+    "answer": "D"
+  },
+  {
+    "question": "Nội dung nào là không phù hợp quy định đối với yêu cầu về nhân sự chủ chốt của gói thầu mua sắm hàng hóa?",
+    "options": {
+      "A": "Không được yêu cầu về huy động nhân sự chủ chốt đối với phần công việc cung cấp hàng hóa",
+      "B": "Chỉ được yêu cầu về huy động nhân sự chủ chốt đối với các dịch vụ liên quan có yếu tố đặc thù, phức tạp cần thiết phải có nhân sự có hiểu biết, nhiều kinh nghiệm đảm nhận.",
+      "C": "Được yêu cầu về huy động nhân sự chủ chốt đối với phần công việc cung cấp hàng hóa mà hàng hóa đó có tính đặc thù cần sự khẳng định của nhà sản xuất, nhà cung cấp để đảm bảo tính khả thi trong việc cung cấp hàng hóa",
+      "D": "Không được nêu yêu cầu huy động về nhân sự chủ chốt đối với hàng hóa thông dụng, sẵn có trên thị trường, không đòi hỏi nhân sự thực hiện dịch vụ liên quan phải có trình độ cao"
+    },
+    "answer": "C"
+  },
+  {
+    "question": "Quy định nào dưới đây không đúng về kế hoạch lựa chọn nhà thầu?",
+    "options": {
+      "A": "Kế hoạch lựa chọn nhà thầu được lập cho toàn bộ dự án, dự toán mua sắm. Trường hợp chưa đủ điều kiện lập kế hoạch lựa chọn nhà thầu cho toàn bộ dự án, dự toán mua sắm thì lập kế hoạch lựa chọn nhà thầu cho một hoặc một số gói thầu để thực hiện trước",
+      "B": "Kế hoạch lựa chọn nhà thầu có thể được lập đồng thời với quá trình lập dự án, dự toán mua sắm hoặc trước khi có quyết định phê duyệt dự án đối với gói thầu cần thực hiện trước khi có quyết định phê duyệt dự án",
+      "C": "Trường hợp gói thầu có thời gian thực hiện dài hơn 01 năm, giá gói thầu trong kế hoạch lựa chọn nhà thầu được ghi rõ theo chu kỳ 01 năm hoặc trên cơ sở toàn bộ thời gian thực hiện gói thầu",
+      "D": "Kế hoạch lựa chọn nhà thầu phải ghi rõ số lượng gói thầu và nội dung của từng gói thầu"
+    },
+    "answer": "C"
+  },
+  {
+    "question": "Trường hợp Hệ thống chưa trích xuất tự động thông tin về nghĩa vụ nộp thuế của nhà thầu thì nhà thầu nộp tài liệu nào để chứng minh nghĩa vụ nộp thuế?",
+    "options": {
+      "A": "A. Phải bao gồm Tờ khai thuế (thông báo nộp tiền của cơ quan thuế đối với hộ kinh doanh) và giấy nộp tiền có xác nhận của cơ quan thuế được in từ Hệ thống thuế điện tử",
+      "B": "B. Phải bao gồm Tờ khai thuế (thông báo nộp tiền của cơ quan thuế đối với hộ kinh doanh) và xác nhận của cơ quan thuế về việc thực hiện nghĩa vụ thuế",
+      "C": "C. Phải bao gồm Tờ khai thuế (thông báo nộp tiền của cơ quan thuế đối với hộ kinh doanh), giấy nộp tiền có xác nhận của cơ quan thuế được in từ Hệ thống thuế điện tử và xác nhận của cơ quan thuế về việc thực hiện nghĩa vụ thuế.",
+      "D": "D. Phương án A hoặc B đúng"
+    },
+    "answer": "D"
+  },
+  {
+    "question": "Việc phê duyệt dự toán đối với phần công việc tùy chọn mua thêm được áp dụng tại thời điểm nào?",
+    "options": {
+      "A": "A. Trước khi phê duyệt kế hoạch lựa chọn nhà thầu, chủ đầu tư phê duyệt dự toán đối với khối lượng mua thêm",
+      "B": "B .Trước khi phê duyệt kế hoạch lựa chọn nhà thầu, chủ đầu tư trình cấp có thẩm quyền phê duyệt dự toán đối với khối lượng mua thêm",
+      "C": "C. Trong quá trình thực hiện hợp đồng, trường hợp sử dụng khối lượng tùy chọn mua thêm, trước khi thực hiện chủ đầu tư phê duyệt dự toán cho khối lượng mua thêm",
+      "D": "D. Không phải phê duyệt dự toán tùy chọn mua thêm"
+    },
+    "answer": "C"
+  },
+  {
+    "question": "Ban Quản lý dự án đầu tư xây dựng tỉnh tổ chức đấu thầu rộng rãi qua mạng đối với gói thầu xây lắp . Nhà thầu A được xếp hạng nhất tại gói thầu này, tuy nhiên, do trong E-HSDT, nhà thầu A đề xuất 01 nhân sự chủ chốt đã huy động cho hợp đồng khác có thời gian làm việc trùng với thời gian thực hiện gói thầu này. Trong trường hợp này, tổ chuyên gia đánh giá về nhân sự chủ chốt của nhà thầu A như thế nào?",
+    "options": {
+      "A": "A. Nhà thầu A bị loại và không được xem xét trúng thầu",
+      "B": "B. Chủ đầu tư cho phép nhà thầu bổ sung, thay thế tối đa hai lần. Trường hợp nhà thầu không có nhân sự thay thế đáp ứng yêu cầu của E- HSMT thì nhà thầu A bị loại và bị đánh giá về uy tín khi tham dự thầu",
+      "C": "C. Tiếp tục đánh giá theo cam kết của nhà thầu trong đơn dự thầu và xét duyệt trúng thầu đối với nhà thầu A",
+      "D": "D. Nhà thầu A bị loại và bị đánh giá là gian lận trong kê khai về nhân sự chủ chốt"
+    },
+    "answer": "B"
+  },
+  {
+    "question": "Tại Mục 2.1 Chương III E-HSMT gói thầu xây lắp quy định nội dung sau: Trong thời gian từ 01/01/2022 đến thời điểm đóng thầu (năm 2025), nhà thầu đã hoàn thành toàn bộ hoặc hoàn thành phần lớn 01 công trình cấp II, có giá trị là 10 tỷ đồng với tư cách là nhà thầu chính (độc lập hoặc thành viên liên danh), nhà thầu quản lý hoặc nhà thầu phụ.\nTrường hợp nào sau đây nhà thầu được đánh giá là không đáp ứng yêu cầu về kinh nghiệm thực hiện hợp đồng tương tự?",
+    "options": {
+      "A": "A. Nhà thầu đã hoàn thành toàn bộ 02 công trình cấp III có giá trị lần lượt là 9 tỷ đồng và 11 tỷ đồng; các hợp đồng được ký kết năm 2022, hoàn thành năm 2025 (trước thời điểm đóng thầu)",
+      "B": "B. Nhà thầu đã hoàn thành toàn bộ 01 công trình cấp II có giá trị là 10 tỷ đồng, hợp đồng được ký kết năm 2018, hoàn thành năm 2022",
+      "C": "C. Nhà thầu đã hoàn thành toàn bộ 01 công trình cấp II có giá trị là 10 tỷ đồng, hợp đồng được ký kết năm 2022, hoàn thành năm 2025 (trước thời điểm đóng thầu)",
+      "D": "D. Tất cả phương án trên đều đáp ứng yêu cầu về kinh nghiệm thực hiện hợp đồng tương tự"
+    },
+    "answer": "A"
+  },
+  {
+    "question": "Nhà thầu đã thực hiện công tác lập hồ sơ thiết kế kỹ thuật cho dự án đầu tư xây dựng công trình được phép thực hiện công việc nào?",
+    "options": {
+      "A": "Lập hồ sơ mời thầu cho các gói thầu xây lắp, mua sắm hàng hóa thuộc dự án",
+      "B": "Lập kế hoạch lựa chọn nhà thầu",
+      "C": "Cung cấp dịch vụ tư vấn giám sát thi công công trình của dự án",
+      "D": "Tất cả các phương án trên đều đúng"
+    },
+    "answer": "D"
+  },
+  {
+    "question": "Nội dung nào sau đây không thuộc trách nhiệm của chủ đầu tư?",
+    "options": {
+      "A": "Lập báo cáo đánh giá hồ sơ dự thầu",
+      "B": "Thương thảo hợp đồng",
+      "C": "Phê duyệt hồ sơ mời thầu",
+      "D": "Yêu cầu nhà thầu làm rõ hồ sơ dự thầu"
+    },
+    "answer": "A"
+  },
+  {
+    "question": "Nhà thầu tư vấn lập hồ sơ mời thầu gói thầu xây lắp được phép tham dự thầu gói thầu nào?",
+    "options": {
+      "A": "Tư vấn đánh giá hồ sơ dự thầu gói thầu xây lắp mà mình đã lập hồ sơ mời thầu",
+      "B": "Tư vấn thẩm định kết quả lựa chọn nhà thầu gói thầu xây lắp mà mình đã lập hồ sơ mời thầu",
+      "C": "Tư vấn giám sát thi công gói thầu xây lắp mà mình đã lập hồ sơ mời thầu",
+      "D": "Tất cả các phương án trên đều đúng"
+    },
+    "answer": "D"
+  },
+  {
+    "question": "Khi tham dự thầu gói thầu mua sắm hàng hóa, trong hồ sơ dự thầu của nhà thầu tuyên bố giá dự thầu không bao gồm thuế, phí, lệ phí thì được đánh giá như thế nào?",
+    "options": {
+      "A": "Hồ sơ dự thầu của nhà thầu không được tiếp tục xem xét, đánh giá",
+      "B": "Hồ sơ dự thầu của nhà thầu được tiếp tục xem xét, đánh giá và giá dự thầu của nhà thầu được hiểu là đã bao gồm toàn bộ thuế, phí, lệ phí",
+      "C": "Tiến hành hiệu chỉnh sai lệch về thuế, phí, lệ phí của nhà thầu theo quy định",
+      "D": "Hồ sơ dự thầu của nhà thầu được tiếp tục xem xét, đánh giá và giá dự thầu của nhà thầu được hiểu là không bao gồm thuế, phí, lệ phí"
+    },
+    "answer": "A"
+  },
+  {
+    "question": "Yêu cầu về nguồn lực tài chính được áp dụng đối với gói thầu nào?",
+    "options": {
+      "A": "Tất cả các gói thầu",
+      "B": "Chỉ áp dụng đối với gói thầu phi tư vấn, mua sắm hàng hóa",
+      "C": "Chỉ áp dụng đối với gói thầu phi tư vấn, mua sắm hàng hóa, xây lắp",
+      "D": "Tất cả các phương án trên đều sai"
+    },
+    "answer": "D"
+  },
+  {
+    "question": "Nhà thầu không thực hiện gia hạn hiệu lực hồ sơ dự thầu theo đề nghị của chủ đầu tư thì xử lý như thế nào?",
+    "options": {
+      "A": "Không được hoàn trả giá trị bảo đảm dự thầu",
+      "B": "Bị đánh giá về uy tín trong tham dự thầu và đăng tải trên hệ thống mạng đấu thầu quốc gia",
+      "C": "Được hoàn trả bảo đảm dự thầu cho nhà thầu",
+      "D": "Phương án A và B đều đúng"
+    },
+    "answer": "C"
+  },
+  {
+    "question": "Chủ đầu tư dự kiến lựa chọn gói thầu xây lắp theo hình thức chỉ định thầu theo quy trình thông thường. Nhà thầu dự kiến được mời nhận hồ sơ yêu cầu phải?",
+    "options": {
+      "A": "Được đánh giá về năng lực và kinh nghiệm",
+      "B": "Hạch toán tài chính độc lập",
+      "C": "Độc lập về pháp lý và độc lập về tài chính với chủ đầu tư",
+      "D": "Các phương án trên đều đúng"
+    },
+    "answer": "B"
+  },
+  {
+    "question": "Doanh nghiệp nhà nước A thực hiện dự án đầu tư có tổng mức đầu tư 1000 tỷ đồng, trong đó vốn từ ngân sách nhà nước là 100 tỷ đồng, vốn tự có của doanh nghiệp là 900 tỷ đồng. Việc lựa chọn nhà thầu của dự án này có phải tuân thủ theo quy định của Luật Đấu thầu?",
+    "options": {
+      "A": "Không phải thực hiện theo quy định của Luật Đấu thầu vì vốn ngân sách nhà nước thấp hơn 30% tổng mức đầu tư",
+      "B": "Doanh nghiệp nhà nước A được tự quyết định việc lựa chọn nhà thầu trên cơ sở bảo đảm công bằng, minh bạch, hiệu quả và trách nhiệm giải trình",
+      "C": "Bắt buộc phải thực hiện theo Luật Đấu thầu",
+      "D": "Phương án A và B đều đúng"
+    },
+    "answer": "C"
+  },
+  {
+    "question": "Công ty B do Doanh nghiệp nhà nước A nắm giữ 100% vốn điều lệ, Công ty B thực hiện dự án có tổng mức đầu tư 500 tỷ đồng, trong đó vốn từ ngân sách nhà nước là 100 tỷ đồng, 400 tỷ đồng là vốn tự có của Công ty B. Hỏi việc lựa chọn nhà thầu của dự án này có phải thực hiện theo quy định của Luật Đấu thầu hay không?",
+    "options": {
+      "A": "Không phải thực hiện theo quy định của Luật Đấu thầu vì vốn ngân sách nhà nước thấp hơn 30% tổng mức đầu tư",
+      "B": "Không phải thực hiện theo quy định của Luật Đấu thầu nhưng phải thực hiện theo quy chế mua sắm của Doanh nghiệp nhà nước A",
+      "C": "Công ty B được tư quyết định việc lựa chọn nhà thầu trên cơ sở bảo đảm công bằng, minh bạch, hiệu quả và trách nhiệm giải trình",
+      "D": "Bắt buộc phải thực hiện theo Luật Đấu thầu"
+    },
+    "answer": "D"
+  },
+  {
+    "question": "Chủ đầu tư A đang lập E-HSMT cho gói thầu dịch vụ tư vấn, tiêu chuẩn đánh giá về kỹ thuật sử dụng phương pháp kết hợp giữa kỹ thuật và giá (thang điểm 100), điểm yêu cầu tối thiểu về kỹ thuật là 70 điểm, trong đó quy định điểm tối đa đối với từng nội dung như sau:\nKinh nghiệm và năng lực của nhà thầu: 5 điểm\nUy tín của nhà thầu: 5 điểm\nGiải pháp và phương pháp luận: 30 điểm\nNhân sự chủ chốt: 60\n\nQuy định nào sau đây về mức điểm yêu cầu tối thiểu về kỹ thuật đối với từng nội dung là phù hợp?",
+    "options": {
+      "A": "Kinh nghiệm và năng lực của nhà thầu: 3 điểm; uy tín của nhà thầu: 3 điểm; giải pháp và phương pháp luận: 18 điểm; nhân sự chủ chốt: 36 điểm",
+      "B": "Kinh nghiệm và năng lực của nhà thầu: 3.5 điểm; uy tín của nhà thầu: 3,5 điểm; giải pháp và phương pháp luận: 21 điểm; nhân sự chủ chốt: 42 điểm",
+      "C": "Kinh nghiệm và năng lực của nhà thầu: 3 điểm; uy tín của nhà thầu: 0 điểm; giải pháp và phương pháp luận: 18 điểm; nhân sự chủ chốt: 36 điểm",
+      "D": "Kinh nghiệm và năng lực của nhà thầu: 3.5 điểm; uy tín của nhà thầu: 0 điểm; giải pháp và phương pháp luận: 21 điểm; nhân sự chủ chốt: 42 điểm"
+    },
+    "answer": "C"
+  },
+  {
+    "question": "Giá gói thầu được cập nhật trong thời hạn bao nhiêu ngày trước ngày mở thầu nếu cần thiết?",
+    "options": {
+      "A": "28 ngày",
+      "B": "18 ngày",
+      "C": "7 ngày",
+      "D": "7 ngày làm việc"
+    },
+    "answer": "A"
+  },
+  {
+    "question": "Hồ sơ mời sơ tuyển được phát hành như thế nào, thời gian chuẩn bị hồ sơ dự sơ tuyển tối thiểu là bao nhiêu ngày?",
+    "options": {
+      "A": "Phát hành miễn phí trên Hệ thống mạng đấu thầu quốc gia, thời gian chuẩn bị tối thiểu là 7 ngày làm việc",
+      "B": "Phát hành trên Hệ thống mạng đấu thầu quốc gia với giá 110.000 đồng/hồ sơ, thời gian chuẩn bị tối thiểu là 9 ngày làm việc",
+      "C": "Phát hành miễn phí trên Hệ thống mạng đấu thầu quốc gia, thời gian chuẩn bị tối thiểu là 9 ngày làm việc",
+      "D": "Phát hành miễn phí trên Hệ thống mạng đấu thầu quốc gia, thời gian chuẩn bị tối thiểu là 9 ngày"
+    },
+    "answer": "D"
+  },
+  {
+    "question": "Chào giá trực tuyến theo quy trình rút gọn được áp dụng trong trường hợp nào?",
+    "options": {
+      "A": "Gói thầu mua sắm hàng hóa phải mua của hãng sản xuất cụ thể để bảo đảm tính tương thích về công nghệ, bản quyền với các trang thiết bị, máy móc, phần mềm, dịch vụ sẵn có có giá gói thầu là 20 tỷ đồng",
+      "B": "Gói thầu cung cấp dịch vụ phi tư vấn phải mua của hãng sản xuất cụ thể để bảo đảm tính tương thích về công nghệ, bản quyền với các trang thiết bị, máy móc, phần mềm, dịch vụ sẵn có có giá gói thầu là 10 tỷ đồng",
+      "C": "Gói thầu mua sắm hàng hóa có giá gói thầu không quá 05 tỷ đồng đối với dự án",
+      "D": "Tất cả các phương án trên đều đúng"
+    },
+    "answer": "D"
+  },
+  {
+    "question": "Đối với gói thầu dịch vụ xây dựng thuộc phạm vi điều chỉnh của Hiệp định CPTPP và tổ chức đấu thầu quốc tế, cơ quan mua sắm có thể áp dụng ưu đãi đối với nhà thầu nội khối nào?",
+    "options": {
+      "A": "Nhà thầu liên danh trong đó có thành viên liên danh là nhà thầu Nhật Bản và thành viên này đảm nhận từ 50% trở lên giá trị công việc của gói thầu",
+      "B": "Nhà thầu liên danh trong đó có thành viên liên danh là nhà thầu nội khối và thành viên này đảm nhận từ 25% trở lên giá trị công việc của gói thầu",
+      "C": "Nhà thầu liên danh trong đó có thành viên liên danh là nhà thầu Hoa Kỳ và thành viên này đảm nhận từ 50% trở lên giá trị công việc của gói thầu",
+      "D": "Nhà thầu liên danh trong đó có thành viên liên danh là nhà thầu nội khối và thành viên này đảm nhận từ 40% trở lên giá trị công việc của gói thầu"
+    },
+    "answer": "A"
+  },
+  {
+    "question": "Một trong các nguyên tắc lập kế hoạch lựa chọn nhà thầu theo quy định tại Nghị định số 95/2020/NĐ-CP là?",
+    "options": {
+      "A": "Không ghi rõ số lượng gói thầu",
+      "B": "Không được chia nhỏ gói thầu để tránh áp dụng Nghị định này",
+      "C": "Phải ghi toàn bộ phương thức lựa chọn nhà thầu là đấu thầu qua mạng",
+      "D": "Ghi thời gian bắt đầu tổ chức lựa chọn nhà thầu là ngày cụ thể trong năm"
+    },
+    "answer": "B"
+  },
+  {
+    "question": "Đối với gói thầu chỉ thuộc phạm vi điều chỉnh của Hiệp định CPTPP, thời điểm chấm dứt áp dụng ưu đãi trong nước là?",
+    "options": {
+      "A": "14 tháng 01 năm 2038",
+      "B": "01 tháng 8 năm 2038",
+      "C": "14 tháng 01 năm 2044",
+      "D": "01 tháng 8 năm 2044"
+    },
+    "answer": "C"
+  },
+  {
+    "question": "Đối với gói thầu thuộc phạm vi điều chỉnh của Hiệp định EVFTA, trong giai đoạn từ 01/8/2020 đến 13/01/2029, tổng giá trị ưu đãi trong nước tối đa trong một năm là?",
+    "options": {
+      "A": "30% tổng giá hợp đồng các gói thầu thuộc phạm vi điều chỉnh của Nghị định số 95/2020/NĐ-CP",
+      "B": "40% tổng giá hợp đồng các gói thầu thuộc phạm vi điều chỉnh của Nghị định số 95/2020/NĐ-CP",
+      "C": "50% tổng giá hợp đồng các gói thầu thuộc phạm vi điều chỉnh của Nghị định số 95/2020/NĐ-CP",
+      "D": "60% tổng giá hợp đồng các gói thầu thuộc phạm vi điều chỉnh của Nghị định số 95/2020/NĐ-CP"
+    },
+    "answer": "B"
+  },
+  {
+    "question": "Một nhà thầu EU tham gia đấu thầu quốc tế gói thầu mua sắm hàng hóa thuộc Hiệp định EVFTA có chi phí sản xuất hàng hóa tại nước thành viên là 45%, gói thầu có áp dụng ưu đãi đối với hàng hóa từ các nước thành viên. Nhà thầu này có được hưởng ưu đãi không?",
+    "options": {
+      "A": "Không được hưởng ưu đãi vì chi phí sản xuất hàng hóa tại các nước thành viên dưới 50%",
+      "B": "Được hưởng ưu đãi vì có chi phí sản xuất hàng hóa tại nước thành viên",
+      "C": "Được hưởng ưu đãi vì tổng chi phí tại nước thành viên là 45%",
+      "D": "Không đủ thông tin để xác định tính chất phức tạp của gói thầu"
+    },
+    "answer": "A"
+  },
+  {
+    "question": "Gói thầu thuộc phạm vi điều chỉnh của Hiệp định CPTPP mua sắm hàng hóa thông dụng, sẵn có trên thị trường với đặc tính kỹ thuật được tiêu chuẩn hóa, tương đương nhau về chất lượng và có giá gói thầu không quá 10 tỷ đồng thì thời gian chuẩn bị hồ sơ dự thầu tối thiểu là?",
+    "options": {
+      "A": "10 ngày",
+      "B": "15 ngày",
+      "C": "20 ngày",
+      "D": "25 ngày"
+    },
+    "answer": "A"
+  },
+  {
+    "question": "Đối với gói thầu thuộc phạm vi điều chỉnh của Hiệp định EVFTA tổ chức đấu thầu quốc tế, có áp dụng ưu đãi đối với hàng hóa, nhà thầu nội khối, một trong các nguyên tắc ưu đãi là?",
+    "options": {
+      "A": "Sau khi tính ưu đãi, nếu các hồ sơ dự thầu xếp hạng ngang nhau thì ưu tiên cho nhà thầu sử dụng nhiều lao động nội khối hơn (tính trên giá trị tiền lương, tiền công chi trả)",
+      "B": "Sau khi tính ưu đãi, nếu các hồ sơ dự thầu xếp hạng ngang nhau thì ưu tiên cho nhà thầu có đề xuất chi phí nội khối thấp hơn.",
+      "C": "Nhà thầu được hưởng tất cả các ưu đãi thuộc đối tượng áp dụng",
+      "D": "Sau khi tính ưu đãi, nếu các hồ sơ dự thầu xếp hạng ngang nhau thì ưu tiên cho nhà thầu có đề xuất chi phí nội khối ít chênh lệch nhất so với yêu cầu của hồ sơ mời thầu"
+    },
+    "answer": "A"
   }
 ];
